@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import UserForm from "./components/UserForm";
+import Sidebar from "./components/Sidebar";
+
 
 function App() {
+
+
+  const [step, setStep] = useState(1)
+
+  const nextStep = () => {
+    setStep(step + 1);
+  }
+
+  const prevStep = () => {
+    setStep(step - 1);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Sidebar step={step} />
+      <UserForm step={step} nextStep={nextStep} prevStep={prevStep} />
     </div>
   );
 }
