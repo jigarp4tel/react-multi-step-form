@@ -27,6 +27,7 @@ const Sidebar = ({ step }) => {
                         <li className={(step === 1) ? 'current' : ''}><span className="numbers">1</span> Personal Information</li>
                         <li className={(step === 2) ? 'current' : ''}><span className="numbers">2</span>Education</li>
                         <li className={(step === 3) ? 'current' : ''}><span className="numbers">3</span>Work Experience</li>
+                        <li className={(step === 4) ? 'current' : ''}><span className="numbers">3</span>Confirm & Submit</li>
                     </ul>
                 </div>
             </div>

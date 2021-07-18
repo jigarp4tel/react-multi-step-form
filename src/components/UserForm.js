@@ -2,40 +2,45 @@ import React, { useState } from 'react'
 import PersonalForm from './PersonalForm'
 import EducationForm from './EducationForm'
 import WorkExperiencesForm from './WorkExperiencesForm'
+import Confirm from './Confirm'
+import Success from './Success'
 
 
 const UserForm = ({ step, prevStep, nextStep }) => {
 
 
     const [personal, setPersonal] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNo: '',
-        country: ''
+        firstName: 'Jigar',
+        lastName: 'Patel',
+        email: 'jigarpatel93@gmail.com',
+        phoneNo: '444555666',
+        country: 'Canada'
     })
 
     const [education, setEducation] = useState({
-        level: '',
-        field: '',
-        school: ''
+        level: 'Bachelors',
+        field: 'Engineering',
+        school: 'PDPU'
     }
     )
 
     const [workExperience, setWorkExperience] = useState([{
-        company: 'apple',
-        position: 'junior'
-    }, {
-        company: 'google',
-        position: 'senior'
+        company: 'Tech Mahindra',
+        position: 'Software Engineer'
+    },
+    {
+        company: 'Traction on Demand',
+        position: 'Junior Developer'
     }
     ])
 
 
-    const addExperience = (id) => {
-        console.log(workExperience[id].company);
-    }
+    const addExperience = (e, id) => {
+        const cloned = [...workExperience];
 
+        cloned[id][e.target.name] = e.target.value;
+        setWorkExperience(cloned)
+    }
 
 
     const handleChange = (input) => (e) => {
@@ -49,16 +54,22 @@ const UserForm = ({ step, prevStep, nextStep }) => {
                 setEducation({ ...education, [input]: e.target.value });
                 break;
 
-            case 3:
-
-                setWorkExperience({ ...workExperience, [0]: { [input]: e.target.value } });
-
-                break;
-
             default:
                 break;
         }
+    }
 
+    const addMore = (e) => {
+
+        e.preventDefault()
+        const newExperience = {
+            company: '',
+            position: ''
+        }
+
+        const clonedWorkExperience = [...workExperience];
+        clonedWorkExperience.push(newExperience)
+        setWorkExperience(clonedWorkExperience)
 
     }
 
@@ -81,7 +92,21 @@ const UserForm = ({ step, prevStep, nextStep }) => {
         case 3:
             return (
                 <>
-                    <WorkExperiencesForm handleChange={handleChange} addExperience={addExperience} values={workExperience} nextStep={nextStep} prevStep={prevStep} />
+                    <WorkExperiencesForm handleChange={addExperience} values={workExperience} nextStep={nextStep} prevStep={prevStep} addMore={addMore} />
+
+                </>
+            )
+        case 4:
+            return (
+                <>
+                    <Confirm values={[personal, education, workExperience]} nextStep={nextStep} prevStep={prevStep} />
+
+                </>
+            )
+        case 5:
+            return (
+                <>
+                    <Success />
 
                 </>
             )

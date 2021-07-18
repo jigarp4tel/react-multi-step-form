@@ -115,12 +115,24 @@ button:hover {
 }
 
 .primary:hover {
-  background-color: #2e72fa;
+  background-color: hsl(220, 95%, 58%);
 }
 
 .action {
   display: flex;
   gap: 2rem;
+}
+
+.submit {
+  background-color: hsl(142, 80%, 60%);
+}
+
+.submit:hover {
+  background-color: hsl(142, 59%, 53%);
+}
+
+.add {
+  margin-bottom: 20px;
 }
 
 /* ======================== FORM =========================== */
@@ -166,4 +178,18 @@ input {
   display: block;
   width: 100%;
   padding: 12px;
+}
+
+table {
+  padding: 30px;
+  border: none;
+}
+
+table td,
+table th {
+  padding: 4px 8px;
+}
+
+table th {
+  text-align: left;
 }
