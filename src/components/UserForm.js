@@ -10,27 +10,23 @@ const UserForm = ({ step, prevStep, nextStep }) => {
 
 
     const [personal, setPersonal] = useState({
-        firstName: 'Jigar',
-        lastName: 'Patel',
-        email: 'jigarpatel93@gmail.com',
-        phoneNo: '444555666',
-        country: 'Canada'
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNo: '',
+        country: ''
     })
 
     const [education, setEducation] = useState({
-        level: 'Bachelors',
-        field: 'Engineering',
-        school: 'PDPU'
+        level: '',
+        field: '',
+        school: ''
     }
     )
 
     const [workExperience, setWorkExperience] = useState([{
-        company: 'Tech Mahindra',
-        position: 'Software Engineer'
-    },
-    {
-        company: 'Traction on Demand',
-        position: 'Junior Developer'
+        company: '',
+        position: ''
     }
     ])
 
