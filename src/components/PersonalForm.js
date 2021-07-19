@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const PersonalForm = ({ handleChange, values, nextStep }) => {
     return (
@@ -44,3 +45,9 @@ const PersonalForm = ({ handleChange, values, nextStep }) => {
 }
 
 export default PersonalForm
+
+PersonalForm.propTypes = {
+    values: {
+        firstName: PropTypes.string.isRequired,
+    }
+}
