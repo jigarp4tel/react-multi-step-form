@@ -8,61 +8,62 @@ const Confirm = ({ values, prevStep, nextStep }) => {
             <h1>You're almost done!</h1>
             <p>Please make sure this information is correct before submitting your application</p>
 
-            <table>
+            <div className='confirm-section'>
+                <div>
+                    <div><b>Name</b></div>
+                    <div>{values[0].firstName + " " + values[0].lastName}</div>
+                </div>
+                <div>
+                    <div><b>Email</b></div>
+                    <div>{values[0].email}</div>
+                </div>
+                <div>
+                    <div><b>Phone No</b></div>
+                    <div>{values[0].phoneNo}</div>
+                </div>
+                <div>
+                    <div><b>Country</b></div>
+                    <div>{values[0].country}</div>
+                </div>
+            </div>
 
-                <tr>
-                    <th>Name</th>
-                    <td>{values[0].firstName + " " + values[0].lastName}</td>
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    <td>{values[0].email}</td>
-                </tr>
-                <tr>
-                    <th>Phone No</th>
-                    <td>{values[0].phoneNo}</td>
-                </tr>
-                <tr>
-                    <th>Country</th>
-                    <td>{values[0].country}</td>
-                </tr>
+            <div className='confirm-section'>
+                <h3>Education</h3>
+                <div>
+                    <div><b>Level</b></div>
+                    <div>{values[1].level}</div>
+                </div>
+                <div>
+                    <div><b>Field</b></div>
+                    <div>{values[1].field}</div>
+                </div>
+                <div>
+                    <div><b>School</b></div>
+                    <div>{values[1].school}</div>
+                </div>
+            </div>
 
-                <br />
-                <tr>Education</tr>
-                <tr>
-                    <th>Level</th>
-                    <td>{values[1].level}</td>
-                </tr>
-                <tr>
-                    <th>Field</th>
-                    <td>{values[1].field}</td>
-                </tr>
-                <tr>
-                    <th>School</th>
-                    <td>{values[1].school}</td>
-                </tr>
+            <div className='confirm-section'>
 
-                <br />
-                <tr>Work Experience</tr>
+                <h3>Work Experience</h3>
                 {
                     values[2].map((experience, id) => (
-                        <>
-                            <tr>
-                                <th>Company</th>
-                                <td>{experience.company}</td>
-                            </tr>
-                            <tr>
-                                <th>Position</th>
-                                <td>{experience.position}</td>
-                            </tr>
-                            <br />
-                        </>
+                        <div key={id} className="work-experience">
+                            <div>
+                                <div><b>Company</b></div>
+                                <div>{experience.company}</div>
+                            </div>
+                            <div>
+                                <div><b>Position</b></div>
+                                <div>{experience.position}</div>
+                            </div>
+                        </div>
                     ))
 
                 }
 
 
-            </table>
+            </div>
 
             <div className='action'>
                 <button className="back" onClick={prevStep}>Back</button>

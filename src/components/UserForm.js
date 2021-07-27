@@ -4,6 +4,7 @@ import EducationForm from './EducationForm'
 import WorkExperiencesForm from './WorkExperiencesForm'
 import Confirm from './Confirm'
 import Success from './Success'
+import validate from './helper/validateValues'
 
 
 const UserForm = ({ step, prevStep, nextStep }) => {
@@ -30,11 +31,26 @@ const UserForm = ({ step, prevStep, nextStep }) => {
     }
     ])
 
+    const [errors, setErrors] = useState({})
+
+
+    const handleStepChange = e => {
+
+        const newErrors = validate(personal);
+        setErrors(newErrors);
+
+        if (Object.keys(newErrors).length === 0) {
+            if (e.target.value === 'Next') {
+                nextStep()
+            }
+        }
+    }
+
 
     const addExperience = (e, id) => {
+        const { name, value } = e.target;
         const cloned = [...workExperience];
-
-        cloned[id][e.target.name] = e.target.value;
+        cloned[id][name] = value;
         setWorkExperience(cloned)
     }
 
@@ -70,11 +86,13 @@ const UserForm = ({ step, prevStep, nextStep }) => {
     }
 
 
+
+
     switch (step) {
         case 1:
             return (
                 <>
-                    <PersonalForm handleChange={handleChange} values={personal} nextStep={nextStep} />
+                    <PersonalForm handleChange={handleChange} values={personal} nextStep={handleStepChange} errors={errors} />
                 </>
             )
         case 2:

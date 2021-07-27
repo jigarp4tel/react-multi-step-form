@@ -124,11 +124,11 @@ button:hover {
 }
 
 .submit {
-  background-color: hsl(142, 80%, 60%);
+  background-color: #00b140;
 }
 
 .submit:hover {
-  background-color: hsl(142, 59%, 53%);
+  background-color: #00b141cc;
 }
 
 .add {
@@ -180,16 +180,28 @@ input {
   padding: 12px;
 }
 
-table {
-  padding: 30px;
-  border: none;
+.danger {
+  color: red;
+  margin-top: 5px;
+  font-size: 12px;
 }
 
-table td,
-table th {
-  padding: 4px 8px;
+/* Confirm Page */
+
+.confirm-section {
+  padding: 20px;
 }
 
-table th {
-  text-align: left;
+.confirm-section > div {
+  display: flex;
+  gap: 2rem;
+}
+
+.confirm-section > div > div {
+  padding: 10px 0;
+}
+
+.work-experience > div {
+  display: flex;
+  gap: 1.2rem;
 }
